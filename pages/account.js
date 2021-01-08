@@ -1,9 +1,10 @@
 import { useAuth } from "@/lib/auth";
-import fetcher from "@/utils/fetcher";
-import useSWR from "swr";
+import { Button } from "@chakra-ui/react";
 
 export default function Account() {
-  const { user } = useAuth();
+  const auth = useAuth();
+  const user = auth.user;
+  if (!user) return "no user";
   if (user) {
     return (
       <>
@@ -11,6 +12,17 @@ export default function Account() {
         <h1>{user.name}</h1>
         <p>{user.email}</p>
         <p>{user.provider}</p>
+        <Button
+          variant="solid"
+          size="md"
+          backgroundColor="main.900"
+          color="back.900"
+          onClick={(e) => {
+            auth.signout();
+          }}
+        >
+          Log Out
+        </Button>
       </>
     );
   }

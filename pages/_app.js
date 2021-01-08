@@ -1,6 +1,6 @@
 import { AuthProvider } from "@/lib/auth";
 import { ChakraProvider } from "@chakra-ui/react";
-import Nav from "@/components/nav";
+import Nav from "@/components/Nav";
 import customTheme from "@/styles/themes";
 
 function MyApp({ Component, pageProps }) {

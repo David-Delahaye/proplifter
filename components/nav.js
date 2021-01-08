@@ -11,7 +11,7 @@ export default function Nav() {
       justifyContent="space-between"
     >
       <NextLink href="/">
-        <Link color="main.900">Proplifter</Link>
+        <Link color="main.900">PROPLIFTER</Link>
       </NextLink>
       <Flex alignItems="center">
         <NextLink href="/login">

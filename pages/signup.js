@@ -1,26 +1,12 @@
 import { useAuth } from "@/lib/auth";
 import { Button, Heading } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function SignUp() {
+  const router = useRouter();
   const auth = useAuth();
-  if (auth.user) {
-    return (
-      <>
-        <Heading></Heading>
-        <Button
-          variant="solid"
-          size="md"
-          backgroundColor="main.900"
-          color="back.900"
-          onClick={(e) => {
-            auth.signout();
-          }}
-        >
-          Log Out
-        </Button>
-      </>
-    );
-  }
+  if (auth.user) router.push("/account");
+
   return (
     <>
       <Heading>Sign Up</Heading>
