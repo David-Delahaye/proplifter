@@ -29,5 +29,13 @@ export default function Dashboard() {
     );
   }
 
+  if (plants)
+    return (
+      <>
+        <AddPlantModal />
+        'EMPTY STATE'
+      </>
+    );
+
   return <h1>Loading State</h1>;
 }
