@@ -7,6 +7,7 @@ import NextLink from "next/link";
 import useSWR, { mutate } from "swr";
 import AddPlantModal from "@/components/AddPlantModal";
 import PlantIcon from "@/components/PlantIcon";
+import PlantsHeader from "@/components/PlantsHeader";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -16,7 +17,7 @@ export default function Dashboard() {
   if (plants?.length) {
     return (
       <>
-        <h1>Dashboard</h1>
+        <PlantsHeader />
         <AddPlantModal />
         {plants.map((plant) => (
           <Flex key={plant.id} alignItems="center" m={2}>

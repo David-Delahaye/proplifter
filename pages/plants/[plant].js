@@ -1,4 +1,5 @@
 import PlantIcon from "@/components/PlantIcon";
+import PlantsHeader from "@/components/PlantsHeader";
 import { getAllPlants, getPlant } from "@/lib/db-admin";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 
@@ -31,6 +32,7 @@ export async function getStaticProps(context) {
 export default function Profile({ plant }) {
   return (
     <>
+      <PlantsHeader />  
       <Flex>
         <PlantIcon icon={plant.icon} />
         <Heading>{plant.name}</Heading>
