@@ -1,3 +1,4 @@
+import DashboardShell from "@/components/DashboardShell";
 import { useAuth } from "@/lib/auth";
 import { Button } from "@chakra-ui/react";
 
@@ -7,8 +8,13 @@ export default function Account() {
   if (!user) return "no user";
   if (user) {
     return (
-      <>
-        <img src={user.photoUrl} style={{ borderRadius: "50%" }} />
+      <DashboardShell>
+        <img
+          src={user.photoUrl}
+          style={{ borderRadius: "50%" }}
+          width="120px"
+          height="120px"
+        />
         <h1>{user.name}</h1>
         <p>{user.email}</p>
         <p>{user.provider}</p>
@@ -23,7 +29,7 @@ export default function Account() {
         >
           Log Out
         </Button>
-      </>
+      </DashboardShell>
     );
   }
   return <h1>Loading State</h1>;

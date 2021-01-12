@@ -1,3 +1,4 @@
+import DashboardShell from "@/components/DashboardShell";
 import PlantIcon from "@/components/PlantIcon";
 import PlantsHeader from "@/components/PlantsHeader";
 import { getAllPlants, getPlant } from "@/lib/db-admin";
@@ -31,8 +32,8 @@ export async function getStaticProps(context) {
 
 export default function Profile({ plant }) {
   return (
-    <>
-      <PlantsHeader />  
+    <DashboardShell>
+      <PlantsHeader />
       <Flex>
         <PlantIcon icon={plant.icon} />
         <Heading>{plant.name}</Heading>
@@ -42,6 +43,6 @@ export default function Profile({ plant }) {
           <Text>sunlight Preference: {plant.sunlight}</Text>
         </Flex>
       </Flex>
-    </>
+    </DashboardShell>
   );
 }

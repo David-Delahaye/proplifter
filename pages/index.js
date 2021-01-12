@@ -1,3 +1,4 @@
+import Nav from "@/components/Nav";
 import { useAuth } from "@/lib/auth";
 import { createPlant } from "@/lib/db";
 import { Text, Heading, Box, Image, Flex, Grid } from "@chakra-ui/react";
@@ -8,6 +9,7 @@ export default function Home() {
 
   return (
     <>
+      <Nav />
       <Flex height="70vh" color="main.900" backgroundColor="back.900">
         <Flex
           height="100%"

@@ -27,7 +27,7 @@ export default function Nav() {
                   height="35px"
                 />
 
-                <Text fontSize="26px" ml={4}>
+                <Text fontSize="20px" ml={4}>
                   {user?.name}
                 </Text>
               </Flex>

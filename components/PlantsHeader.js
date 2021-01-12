@@ -9,6 +9,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
+import AddPlantModal from "./AddPlantModal";
 
 export default function PlantsHeader() {
   return (
@@ -20,18 +21,21 @@ export default function PlantsHeader() {
               <NextLink href="/plants">Plants</NextLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          <Heading>All Plants</Heading>
+          <Flex>
+            <Heading mr={2}>All Plants</Heading>
+            <AddPlantModal />
+          </Flex>
         </Flex>
-        <Flex flexDirection="row" alignItems="flex-end">
-          <Text minW="fit-content" mr={2} fontSize="20px">
+        <Flex flexDirection="row" alignItems="center">
+          <Text minW="fit-content" fontSize="20px">
             Sort By
           </Text>
-          <Select variant="outline" size="md">
+          <Select variant="ghost" size="md">
             <option>Water ^</option>
           </Select>
         </Flex>
       </Flex>
-      <Divider borderColor="blackAlpha.500" />
+      <Divider borderColor="blackAlpha.500" my={4} />
     </>
   );
 }

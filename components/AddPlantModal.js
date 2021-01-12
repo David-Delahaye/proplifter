@@ -85,7 +85,15 @@ export default function AddPlantModal() {
 
   return (
     <>
-      <Button onClick={onOpen}>+ Add Plant</Button>
+      <Button
+        onClick={onOpen}
+        borderRadius="50%"
+        backgroundColor="main.900"
+        color="back.900"
+        fontSize="26px"
+      >
+        +
+      </Button>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
