@@ -26,6 +26,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { mutate } from "swr";
+import PlantIcon from "./PlantIcon";
 
 export default function AddPlantModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,20 +37,18 @@ export default function AddPlantModal() {
 
   var indents = [];
   for (var i = 1; i < 50; i++) {
-    let num = i;
-    if (i < 10) num = "0" + num;
     indents.push(
       <FormLabel width="64px" height="64px" borderRadius="50%">
         <Input
           type="radio"
           name="icon"
-          value={num}
+          value={i}
           position="absolute"
           w="64px"
           h="64px"
         />
-        <Image
-          src={`/svg/0${num}-botanic.svg`}
+        <PlantIcon
+          icon={i}
           width="64px"
           height="64px"
           key={i}

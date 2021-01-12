@@ -1,5 +1,6 @@
 import DashboardShell from "@/components/DashboardShell";
 import { useAuth } from "@/lib/auth";
+import { Google } from "@/styles/icons";
 import { Button } from "@chakra-ui/react";
 
 export default function Account() {
@@ -17,7 +18,10 @@ export default function Account() {
         />
         <h1>{user.name}</h1>
         <p>{user.email}</p>
-        <p>{user.provider}</p>
+        <p>
+          <Google />
+          {user.provider}
+        </p>
         <Button
           variant="solid"
           size="md"
