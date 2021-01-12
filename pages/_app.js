@@ -12,7 +12,6 @@ function MyApp({ Component, pageProps }) {
         rel="stylesheet"
       />
       <AuthProvider>
-        <Nav />
         <Component {...pageProps} />
       </AuthProvider>
     </ChakraProvider>

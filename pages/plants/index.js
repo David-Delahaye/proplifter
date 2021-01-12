@@ -8,6 +8,8 @@ import useSWR, { mutate } from "swr";
 import AddPlantModal from "@/components/AddPlantModal";
 import PlantIcon from "@/components/PlantIcon";
 import PlantsHeader from "@/components/PlantsHeader";
+import DashboardShell from "@/components/DashboardShell";
+import PlantTable from "@/components/PlantTable";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -16,19 +18,10 @@ export default function Dashboard() {
 
   if (plants?.length) {
     return (
-      <>
+      <DashboardShell>
         <PlantsHeader />
-        <AddPlantModal />
-        {plants.map((plant) => (
-          <Flex key={plant.id} alignItems="center" m={2}>
-            <PlantIcon icon={plant.icon} />
-            <Text>{plant.name}</Text>
-            <NextLink href={`/plants/${plant.id}`}>
-              <Link>See more</Link>
-            </NextLink>
-          </Flex>
-        ))}
-      </>
+        <PlantTable plants={plants} />
+      </DashboardShell>
     );
   }
 
