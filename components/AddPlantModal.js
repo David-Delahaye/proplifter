@@ -41,19 +41,15 @@ export default function AddPlantModal() {
       <FormLabel width="64px" height="64px" borderRadius="50%">
         <Input
           type="radio"
+          key={i}
           name="icon"
           value={i}
+          id={i}
           position="absolute"
           w="64px"
           h="64px"
         />
-        <PlantIcon
-          icon={i}
-          width="64px"
-          height="64px"
-          key={i}
-          p={1}
-        />
+        <PlantIcon icon={i} width="64px" height="64px" p={1} />
       </FormLabel>
     );
   }
@@ -67,7 +63,11 @@ export default function AddPlantModal() {
       height: e.target.height.value,
       sunlight: e.target.sunlight.value,
       water: e.target.water.value,
+      feed: e.target.feed.value,
       authorId: user?.uid,
+      createdAt: new Date().toISOString(),
+      lastWatered: new Date().toISOString(),
+      lastFed: new Date().toISOString(),
     };
     const { id } = createPlant(newPlant);
 
@@ -139,8 +139,22 @@ export default function AddPlantModal() {
             <FormControl mt={4}>
               <FormLabel>Water Interval</FormLabel>
               <Slider
-                aria-label="slider-ex-5"
+                aria-label="watering frequency"
                 name="water"
+                onChangeEnd={(val) => console.log(val)}
+              >
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb />
+              </Slider>
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Feed Interval</FormLabel>
+              <Slider
+                aria-label="feeding frequency"
+                name="feed"
                 onChangeEnd={(val) => console.log(val)}
               >
                 <SliderTrack>
