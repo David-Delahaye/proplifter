@@ -11,7 +11,29 @@ import {
 import NextLink from "next/link";
 import AddPlantModal from "./AddPlantModal";
 
-export default function PlantsHeader() {
+export default function PlantsHeader({ plant }) {
+  if (plant) {
+    return (
+      <>
+        <Flex justifyContent="space-between" alignItems="flex-end">
+          <Flex flexDirection="column">
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <NextLink href="/plants">Plants</NextLink>
+              </BreadcrumbItem>
+              <BreadcrumbItem>
+                <NextLink href={`/plants/${plant.id}`}>{plant.name}</NextLink>
+              </BreadcrumbItem>
+            </Breadcrumb>
+            <Flex>
+              <Heading mr={2}>{plant.name}</Heading>
+            </Flex>
+          </Flex>
+        </Flex>
+        <Divider borderColor="blackAlpha.500" my={4} />
+      </>
+    );
+  }
   return (
     <>
       <Flex justifyContent="space-between" alignItems="flex-end">

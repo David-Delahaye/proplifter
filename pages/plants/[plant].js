@@ -34,7 +34,7 @@ export async function getStaticProps(context) {
 export default function Profile({ plant }) {
   return (
     <DashboardShell>
-      <PlantsHeader />
+      <PlantsHeader plant={plant} />
       <Flex>
         <PlantIcon icon={plant.icon} />
         <Heading>{plant.name}</Heading>
