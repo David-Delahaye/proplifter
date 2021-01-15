@@ -1,5 +1,5 @@
 import { useAuth } from "@/lib/auth";
-import { Flex, Text, Link, Button } from "@chakra-ui/react";
+import { Flex, Text, Link, Button, Stack } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 export default function Nav() {
@@ -14,9 +14,19 @@ export default function Nav() {
       justifyContent="space-between"
       margin="auto"
     >
-      <NextLink href="/">
-        <Link color="main.900">PROPLIFTER</Link>
-      </NextLink>
+      <Stack direction={["row"]} spacing="24px">
+        <NextLink href="/">
+          <Link color="main.900" mr={12}>
+            PROPLIFTER
+          </Link>
+        </NextLink>
+        <NextLink href="/plants">
+          <Link color="main.900">PLANTS</Link>
+        </NextLink>
+        <NextLink href="/">
+          <Link color="main.900">ACTIVITY</Link>
+        </NextLink>
+      </Stack>
       <Flex alignItems="center">
         {user ? (
           <NextLink href="/account">

@@ -1,5 +1,6 @@
 import DashboardShell from "@/components/DashboardShell";
 import Nav from "@/components/Nav";
+import PageRow from "@/components/PageRow";
 import PlantIcon from "@/components/PlantIcon";
 import { useAuth } from "@/lib/auth";
 import { createPlant } from "@/lib/db";
@@ -13,6 +14,7 @@ import {
   Grid,
   Center,
   Button,
+  Spacer,
 } from "@chakra-ui/react";
 
 Flex;
@@ -21,14 +23,7 @@ export default function Home() {
 
   return (
     <DashboardShell>
-      <Flex
-        color="main.900"
-        backgroundColor="back.900"
-        position="relative"
-        flexDir={["column-reverse", "column-reverse", "row"]}
-        mb={16}
-        minH="40vh"
-      >
+      <PageRow>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -55,23 +50,18 @@ export default function Home() {
         <Center flex="1" display={["none", "none", "flex"]}>
           <PlantIcon icon={4} width={["50%", "50%", "100%"]} />
         </Center>
-      </Flex>
-      <Flex
-        minH="70vh"
-        color="main.900"
-        backgroundColor="back.900"
-        flexDir={["column", "column", "column", "row"]}
-        mb={16}
-      >
+      </PageRow>
+      <PageRow>
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="flex-start"
           flex="1"
           mb={8}
+          mr={[0, 0, 8]}
         >
           <Heading>Track Variables</Heading>
-          <Text maxW="500px" mt={2} pr={8}>
+          <Text maxW="500px" mt={2}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
             blandit erat vel mi finibus fermentum. Donec interdum interdum
             tellus, ut consequat magna consectetur et. Phasellus nec maximus
@@ -104,7 +94,7 @@ export default function Home() {
               alignItems="flex-start"
               p={4}
             >
-              <Heading mb={2}>
+              <Heading mb={2} fontSize="20px">
                 <Sunlight width="32px" height="32px" /> - Light
               </Heading>
               <Text maxW="500px">
@@ -119,7 +109,7 @@ export default function Home() {
               p={4}
               alignItems="flex-start"
             >
-              <Heading mb={2}>
+              <Heading mb={2} fontSize="20px">
                 <Growth width="32px" height="32px" /> - Size
               </Heading>
               <Text maxW="500px">
@@ -134,7 +124,7 @@ export default function Home() {
               p={4}
               alignItems="flex-start"
             >
-              <Heading mb={2}>
+              <Heading mb={2} fontSize="20px">
                 <Water width="32px" height="32px" /> - Water
               </Heading>
               <Text maxW="500px">
@@ -149,7 +139,7 @@ export default function Home() {
               p={4}
               alignItems="flex-start"
             >
-              <Heading mb={2}>
+              <Heading mb={2} fontSize="20px">
                 <Nutrition width="32px" height="32px" /> - Nutrition
               </Heading>
               <Text maxW="500px">
@@ -159,38 +149,15 @@ export default function Home() {
             </Center>
           </Grid>
         </Center>
-      </Flex>
-      <Flex
-        minH="70vh"
-        color="main.900"
-        backgroundColor="back.900"
-        flexDir={["column-reverse", "column-reverse", "row"]}
-      >
-        <Center flex="1" mr={16}>
-          <Box
-            width="100%"
-            height="30vh"
-            backgroundColor="main.900"
-            borderRadius={40}
-            p={5}
-            color="back.900"
-          >
-            Log notes here obviuosly salmonella
-            <br />
-            Log notes here obviuosly
-            <br />
-            Log notes here obviuosly beep
-            <br />
-            Log notes here obviuosly or not so obcioly
-            <br />
-          </Box>
-        </Center>
+      </PageRow>
+      <PageRow>
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="flex-start"
           flex="1"
           mb={8}
+          mr={[0, 0, 8]}
         >
           <Heading>Log your success</Heading>
           <Text mt={2}>
@@ -212,7 +179,26 @@ export default function Home() {
             Start taking notes
           </Button>
         </Flex>
-      </Flex>
+        <Center flex="1">
+          <Box
+            width="100%"
+            height="30vh"
+            backgroundColor="main.900"
+            borderRadius={40}
+            p={5}
+            color="back.900"
+          >
+            Log notes here obviuosly salmonella
+            <br />
+            Log notes here obviuosly
+            <br />
+            Log notes here obviuosly beep
+            <br />
+            Log notes here obviuosly or not so obcioly
+            <br />
+          </Box>
+        </Center>
+      </PageRow>
     </DashboardShell>
   );
 }
