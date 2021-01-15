@@ -3,6 +3,7 @@ import {
   Flex,
   Heading,
   Link,
+  Stack,
   Table,
   Tbody,
   Text,
@@ -18,51 +19,50 @@ import { QuickFeed, QuickWater } from "./QuickUpdate";
 
 export default function PlantTable({ plants }) {
   return (
-    <Table>
-      <Tbody>
+    <>
+      <Flex flexDir="column">
         {plants.map((plant, i) => (
-          <Tr key={i}>
-            <Flex
-              key={plant.id}
-              alignItems="center"
-              justifyContent="space-between"
-              p={4}
-              backgroundColor={i % 2 === 0 ? "main.900" : "back.900"}
-              color={i % 2 === 0 ? "back.900" : "main.900"}
-            >
-              <Flex alignItems="center">
-                <PlantIcon icon={plant.icon} width="64px" height="64px" />
-                <Flex flexDirection="column" ml={4}>
-                  <Heading fontSize="26px">{plant.name}</Heading>
-                  <Text>
-                    water in{" "}
-                    {differenceInCalendarDays(
-                      addDays(new Date(), plant.water),
-                      parseISO(plant.lastWatered)
-                    )}{" "}
-                    days
-                  </Text>
-                  <Text>
-                    feed in{" "}
-                    {differenceInCalendarDays(
-                      addDays(new Date(), plant.feed),
-                      parseISO(plant.lastFed)
-                    )}{" "}
-                    days
-                  </Text>
-                </Flex>
-              </Flex>
-              <Flex flexDir="column">
-                <QuickWater plant={plant} />
-                <QuickFeed plant={plant} />
+          <Flex
+            key={plant.id}
+            alignItems="center"
+            justifyContent="space-between"
+            p={4}
+            backgroundColor={i % 2 === 0 ? "main.900" : "back.900"}
+            color={i % 2 === 0 ? "back.900" : "main.900"}
+          >
+            <Flex alignItems="center">
+              <PlantIcon icon={plant.icon} width="64px" height="64px" />
+              <Flex flexDirection="column" ml={4}>
                 <NextLink href={`/plants/${plant.id}`}>
-                  <Link>See more</Link>
+                  <Link>
+                    <Heading fontSize="26px">{plant.name}</Heading>
+                  </Link>
                 </NextLink>
+                <Text>
+                  water in{" "}
+                  {differenceInCalendarDays(
+                    addDays(parseISO(plant.lastWatered), plant.water),
+                    parseISO(plant.lastWatered)
+                  )}{" "}
+                  days
+                </Text>
+                <Text>
+                  feed in{" "}
+                  {differenceInCalendarDays(
+                    addDays(parseISO(plant.lastFed), plant.feed),
+                    parseISO(plant.lastFed)
+                  )}{" "}
+                  days
+                </Text>
               </Flex>
             </Flex>
-          </Tr>
+            <Stack direction="row" gap={4}>
+              <QuickWater plant={plant} />
+              <QuickFeed plant={plant} />
+            </Stack>
+          </Flex>
         ))}
-      </Tbody>
-    </Table>
+      </Flex>
+    </>
   );
 }

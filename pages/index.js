@@ -1,4 +1,6 @@
+import DashboardShell from "@/components/DashboardShell";
 import Nav from "@/components/Nav";
+import PageRow from "@/components/PageRow";
 import PlantIcon from "@/components/PlantIcon";
 import { useAuth } from "@/lib/auth";
 import { createPlant } from "@/lib/db";
@@ -12,6 +14,7 @@ import {
   Grid,
   Center,
   Button,
+  Spacer,
 } from "@chakra-ui/react";
 
 Flex;
@@ -19,24 +22,15 @@ export default function Home() {
   const auth = useAuth();
 
   return (
-    <>
-      <Nav />
-      <Flex
-        height="70vh"
-        color="main.900"
-        backgroundColor="back.900"
-        position="relative"
-      >
+    <DashboardShell>
+      <PageRow>
         <Flex
-          height="100%"
-          width="50%"
-          p={8}
           flexDirection="column"
           justifyContent="center"
-          bgGradient="linear(to-r, back.900, transparent)"
-          mr={-8}
+          alignItems="flex-start"
+          flex="1"
         >
-          <Heading>Watch Your Plants Grow</Heading>
+          <Heading maxW="500px">Watch Your Plants Grow</Heading>
           <Text maxW="500px" mt={2}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
             blandit erat vel mi finibus fermentum. Donec interdum interdum
@@ -48,21 +42,23 @@ export default function Home() {
             mt={4}
             maxW="fit-content"
             px={8}
+            borderRadius={40}
           >
             Sign Up
           </Button>
         </Flex>
-        <Center width="50%">
-          <PlantIcon icon={1} width="50%" />
+        <Center flex="1" display={["none", "none", "flex"]}>
+          <PlantIcon icon={4} width={["50%", "50%", "100%"]} />
         </Center>
-      </Flex>
-      <Flex height="70vh" color="main.900" backgroundColor="back.900">
+      </PageRow>
+      <PageRow>
         <Flex
-          height="100%"
-          width="50%"
-          padding={8}
           flexDirection="column"
           justifyContent="center"
+          alignItems="flex-start"
+          flex="1"
+          mb={8}
+          mr={[0, 0, 8]}
         >
           <Heading>Track Variables</Heading>
           <Text maxW="500px" mt={2}>
@@ -79,61 +75,89 @@ export default function Home() {
             mt={4}
             maxW="fit-content"
             px={8}
+            borderRadius={40}
           >
             Add your first plant
           </Button>
         </Flex>
-        <Grid templateColumns="repeat(2, 1fr)" width="50%" gap={5} p={8}>
-          <Center color="main.900" flexDir="column">
-            <Sunlight width="64px" height="64px" />
-            <Heading>Sunlight</Heading>
-            <Text align="center" maxW="500px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              blandit erat vel mi finibus fermentum.
-            </Text>
-          </Center>
+        <Center flex="1" justifyContent="flex-start">
+          <Grid
+            templateColumns={[
+              "repeat(1, 100%)",
+              "repeat(1, 100%)",
+              "repeat(2, 50%)",
+            ]}
+          >
+            <Center
+              color="main.900"
+              flexDir="column"
+              alignItems="flex-start"
+              p={4}
+            >
+              <Heading mb={2} fontSize="20px">
+                <Sunlight width="32px" height="32px" /> - Light
+              </Heading>
+              <Text maxW="500px">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                blandit erat vel mi finibus fermentum.
+              </Text>
+            </Center>
 
-          <Center color="main.900" flexDir="column">
-            <Growth width="64px" height="64px" />
-            <Heading>Size</Heading>
-            <Text align="center" maxW="500px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              blandit erat vel mi finibus fermentum.
-            </Text>
-          </Center>
+            <Center
+              color="main.900"
+              flexDir="column"
+              p={4}
+              alignItems="flex-start"
+            >
+              <Heading mb={2} fontSize="20px">
+                <Growth width="32px" height="32px" /> - Size
+              </Heading>
+              <Text maxW="500px">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                blandit erat vel mi finibus fermentum.
+              </Text>
+            </Center>
 
-          <Center color="main.900" flexDir="column">
-            <Water width="64px" height="64px" />
-            <Heading>Water</Heading>
-            <Text align="center" maxW="500px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              blandit erat vel mi finibus fermentum.
-            </Text>
-          </Center>
+            <Center
+              color="main.900"
+              flexDir="column"
+              p={4}
+              alignItems="flex-start"
+            >
+              <Heading mb={2} fontSize="20px">
+                <Water width="32px" height="32px" /> - Water
+              </Heading>
+              <Text maxW="500px">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                blandit erat vel mi finibus fermentum.
+              </Text>
+            </Center>
 
-          <Center color="main.900" flexDir="column" p={8}>
-            <Nutrition width="64px" height="64px" />
-            <Heading>Nutrition</Heading>
-            <Text align="center" maxW="500px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              blandit erat vel mi finibus fermentum.
-            </Text>
-          </Center>
-        </Grid>
-      </Flex>
-      <Flex height="70vh" color="main.900" backgroundColor="back.900">
-        <Grid templateColumns="repeat(2, 1fr)" width="50%">
-          <Box w="100%" h="100%" bg="main.900" />
-          <Box w="100%" h="100%" bg="blue.900" />
-          <Box w="100%" h="100%" bg="blue.900" />
-          <Box w="100%" h="100%" bg="main.900" />
-        </Grid>
+            <Center
+              color="main.900"
+              flexDir="column"
+              p={4}
+              alignItems="flex-start"
+            >
+              <Heading mb={2} fontSize="20px">
+                <Nutrition width="32px" height="32px" /> - Nutrition
+              </Heading>
+              <Text maxW="500px">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                blandit erat vel mi finibus fermentum.
+              </Text>
+            </Center>
+          </Grid>
+        </Center>
+      </PageRow>
+      <PageRow>
         <Flex
-          height="100%"
-          width="50%"
-          padding={8}
           flexDirection="column"
           justifyContent="center"
+          alignItems="flex-start"
+          flex="1"
+          mb={8}
+          mr={[0, 0, 8]}
         >
           <Heading>Log your success</Heading>
           <Text mt={2}>
@@ -150,11 +174,31 @@ export default function Home() {
             mt={4}
             maxW="fit-content"
             px={8}
+            borderRadius={40}
           >
             Start taking notes
           </Button>
         </Flex>
-      </Flex>
-    </>
+        <Center flex="1">
+          <Box
+            width="100%"
+            height="30vh"
+            backgroundColor="main.900"
+            borderRadius={40}
+            p={5}
+            color="back.900"
+          >
+            Log notes here obviuosly salmonella
+            <br />
+            Log notes here obviuosly
+            <br />
+            Log notes here obviuosly beep
+            <br />
+            Log notes here obviuosly or not so obcioly
+            <br />
+          </Box>
+        </Center>
+      </PageRow>
+    </DashboardShell>
   );
 }

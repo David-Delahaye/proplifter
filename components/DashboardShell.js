@@ -10,8 +10,10 @@ export default function DashboardShell({ children }) {
       <Flex
         flexDirection="column"
         p={8}
+        px={[4, 8, 24, 40, 56]}
+        m="auto"
         backgroundColor="back.900"
-        height="95vh"
+        minH="95vh"
       >
         {children}
       </Flex>

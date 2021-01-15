@@ -38,10 +38,9 @@ export default function AddPlantModal() {
   var indents = [];
   for (var i = 1; i < 50; i++) {
     indents.push(
-      <FormLabel width="64px" height="64px" borderRadius="50%">
+      <FormLabel width="64px" height="64px" borderRadius="50%" key={i}>
         <Input
           type="radio"
-          key={i}
           name="icon"
           value={i}
           id={i}
