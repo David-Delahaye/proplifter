@@ -1,7 +1,22 @@
 import DashboardShell from "@/components/DashboardShell";
+import PageRow from "@/components/PageRow";
+import PlantIcon from "@/components/PlantIcon";
 import { useAuth } from "@/lib/auth";
 import { Google } from "@/styles/icons";
-import { Button } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Badge,
+  Box,
+  Button,
+  Center,
+  Divider,
+  Flex,
+  Heading,
+  Image,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 export default function Account() {
   const auth = useAuth();
@@ -10,29 +25,47 @@ export default function Account() {
   if (user) {
     return (
       <DashboardShell>
-        <img
-          src={user.photoUrl}
-          style={{ borderRadius: "50%" }}
-          width="120px"
-          height="120px"
-        />
-        <h1>{user.name}</h1>
-        <p>{user.email}</p>
-        <p>
-          <Google />
-          {user.provider}
-        </p>
-        <Button
-          variant="solid"
-          size="md"
-          backgroundColor="main.900"
-          color="back.900"
-          onClick={(e) => {
-            auth.signout();
-          }}
-        >
-          Log Out
-        </Button>
+        <PageRow>
+          <Flex flex="1" alignItems="center" height="70vh">
+            <Image
+              src={user.photoUrl}
+              style={{ borderRadius: "50%" }}
+              width="100px"
+              height="100px"
+              mr={4}
+            />
+            <Stack direction="column">
+              <Heading>
+                {user.name}
+                <Badge>FREE</Badge>
+              </Heading>
+              <Text>{user.email}</Text>
+              <Text>
+                <Google /> Verified
+              </Text>
+
+              <Divider />
+
+              <Link
+                onClick={(e) => {
+                  auth.signout();
+                }}
+              >
+                Log Out
+              </Link>
+              <Link
+                onClick={(e) => {
+                  console.log("TODO, switch account");
+                }}
+              >
+                Switch Account
+              </Link>
+            </Stack>
+          </Flex>
+          <Center flex="1" display={["none", "none", "flex"]}>
+            <PlantIcon icon={6} width="65%" />
+          </Center>
+        </PageRow>
       </DashboardShell>
     );
   }
