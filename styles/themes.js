@@ -9,7 +9,7 @@ const customTheme = extendTheme({
       900: "#F2F2F2",
     },
     main: {
-      900: "#333333",
+      900: "#233332",
     },
   },
   fontWeights: {

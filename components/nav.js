@@ -8,9 +8,11 @@ export default function Nav() {
     <Flex
       backgroundColor="back.900"
       height="50px"
-      padding={8}
+      p={8}
+      px={[4, 8, 24, 40, 56]}
       alignItems="center"
       justifyContent="space-between"
+      margin="auto"
     >
       <NextLink href="/">
         <Link color="main.900">PROPLIFTER</Link>
