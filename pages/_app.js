@@ -11,6 +11,8 @@ function MyApp({ Component, pageProps }) {
         href="https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap"
         rel="stylesheet"
       />
+  
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet"/>
       <AuthProvider>
         <Component {...pageProps} />
       </AuthProvider>

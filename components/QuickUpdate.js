@@ -12,8 +12,6 @@ import {
 } from "date-fns";
 
 export function QuickWater({ plant }) {
-  const nextWater = addDays(parseISO(plant.lastWatered), plant.water);
-  const tillNextWater = formatDistanceToNow(nextWater);
   if (isToday(parseISO(plant.lastWatered))) {
     return (
       <Tooltip
@@ -22,21 +20,28 @@ export function QuickWater({ plant }) {
         bg="main.900"
         color="back.900"
       >
-        <Tick boxSize={12} />
+        <Tick boxSize={8} />
       </Tooltip>
     );
   }
   return (
     <>
-      <Link
-        onClick={() => {
-          updatePlant(plant.id, {
-            lastWatered: new Date().toISOString(),
-          });
-        }}
+      <Tooltip
+        label="Water"
+        aria-label="A tooltip"
+        bg="main.900"
+        color="back.900"
       >
-        <Water boxSize={12} />
-      </Link>
+        <Link
+          onClick={() => {
+            updatePlant(plant.id, {
+              lastWatered: new Date().toISOString(),
+            });
+          }}
+        >
+          <Water boxSize={8} />
+        </Link>
+      </Tooltip>
     </>
   );
 }
@@ -51,7 +56,7 @@ export function QuickFeed({ plant }) {
           bg="main.900"
           color="back.900"
         >
-          <Tick boxSize={12} />
+          <Tick boxSize={8} />
         </Tooltip>
       </>
     );
@@ -60,15 +65,36 @@ export function QuickFeed({ plant }) {
   const tillNextFeed = formatDistanceToNow(nextFeed);
   return (
     <>
-      <Link
-        onClick={() => {
-          updatePlant(plant.id, {
-            lastFed: new Date().toISOString(),
-          });
-        }}
+      <Tooltip
+        label="Feed"
+        aria-label="A tooltip"
+        bg="main.900"
+        color="back.900"
       >
-        <Nutrition boxSize={12} />
-      </Link>
+        <Link
+          onClick={() => {
+            updatePlant(plant.id, {
+              lastFed: new Date().toISOString(),
+            });
+          }}
+        >
+          <Nutrition boxSize={8} />
+        </Link>
+      </Tooltip>
     </>
   );
+}
+
+export function WaterReminder({ plant }) {
+  const nextWater = addDays(parseISO(plant.lastWatered), plant.water);
+  const tillNextWater = formatDistanceToNow(nextWater);
+
+  return tillNextWater;
+}
+
+export function FeedReminder({ plant }) {
+  const nextFeed = addDays(parseISO(plant.lastFed), plant.feed);
+  const tillNextFeed = formatDistanceToNow(nextFeed);
+
+  return tillNextFeed;
 }
