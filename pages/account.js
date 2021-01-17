@@ -26,7 +26,7 @@ export default function Account() {
     return (
       <DashboardShell>
         <PageRow>
-          <Flex flex="1" alignItems="center" height="70vh">
+          <Flex flex="1" alignItems="center" minH="70vh">
             <Image
               src={user.photoUrl}
               style={{ borderRadius: "50%" }}

@@ -1,10 +1,18 @@
+import AddLogModal from "@/components/AddLogModal";
 import DashboardShell from "@/components/DashboardShell";
 import PageRow from "@/components/PageRow";
 import PlantIcon from "@/components/PlantIcon";
 import PlantsHeader from "@/components/PlantsHeader";
-import { QuickFeed, QuickWater } from "@/components/QuickUpdate";
+import LogTable from "@/components/LogTable";
+import {
+  QuickFeed,
+  QuickWater,
+  WaterReminder,
+  FeedReminder,
+} from "@/components/QuickUpdate";
 import { getAllPlants, getPlant } from "@/lib/db-admin";
 import { Growth, Nutrition, Sunlight, Water } from "@/styles/icons";
+import fetcher from "@/utils/fetcher";
 import {
   AspectRatio,
   Box,
@@ -20,6 +28,8 @@ import {
   StatNumber,
   Text,
 } from "@chakra-ui/react";
+import useSWR from "swr";
+import Graph from "@/components/Graph";
 
 export async function getStaticPaths() {
   const { plants } = await getAllPlants();
@@ -58,14 +68,18 @@ export default function Profile({ plant }) {
           </Center>
         </AspectRatio>
         <Flex flexDirection="column" width="100%" flex="1">
-          <Stack direction={["row"]} justifyContent="space-around" w="100%">
-            <QuickWater plant={plant} />
-            <QuickFeed plant={plant} />
-          </Stack>
+          <Flex direction={["row"]} w="100%">
+            <Text width="50%">
+              <QuickWater plant={plant} /> <WaterReminder plant={plant} />
+            </Text>
+            <Text>
+              <QuickFeed plant={plant} /> <FeedReminder plant={plant} />
+            </Text>
+          </Flex>
           <Divider borderColor="blackAlpha.500" my={4} />
           <Grid
+            rowGap={8}
             maxW="100%"
-            gap={12}
             templateColumns={["repeat(1, 100%)", "repeat(2, 50%)"]}
           >
             <Stat>
@@ -108,36 +122,31 @@ export default function Profile({ plant }) {
       </PageRow>
       <PageRow>
         <Box
-          width="100%"
-          height="30vh"
+          m={2}
+          flex="1"
+          height="50vh"
           backgroundColor="main.900"
           borderRadius={40}
           p={5}
           color="back.900"
         >
-          Log notes here obviuosly salmonella
-          <br />
-          Log notes here obviuosly
-          <br />
-          Log notes here obviuosly beep
-          <br />
-          Log notes here obviuosly or not so obcioly
-          <br />
+          <AddLogModal plant={plant} />
+          <LogTable plant={plant} />
+        </Box>
+        <Box
+          m={2}
+          flex="1"
+          height="50vh"
+          backgroundColor="main.900"
+          borderRadius={40}
+          p={5}
+          color="back.900"
+        >
+          <Graph plant={plant} />
         </Box>
       </PageRow>
 
-      <PageRow>
-        <Box
-          width="100%"
-          height="30vh"
-          backgroundColor="main.900"
-          borderRadius={40}
-          p={5}
-          color="back.900"
-        >
-          Graph
-        </Box>
-      </PageRow>
+      <PageRow></PageRow>
     </DashboardShell>
   );
 }

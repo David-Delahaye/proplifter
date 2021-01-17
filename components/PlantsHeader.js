@@ -49,10 +49,12 @@ export default function PlantsHeader({ plant }) {
           </Flex>
         </Flex>
         <Flex flexDirection="row" alignItems="center">
-          <Text minW="fit-content" fontSize="20px">
-            Sort By
-          </Text>
-          <Select variant="ghost" size="md">
+          <Select
+            variant="ghost"
+            backgroundColor="back.900"
+            size="md"
+            placeholder="Sort By"
+          >
             <option>Water ^</option>
           </Select>
         </Flex>

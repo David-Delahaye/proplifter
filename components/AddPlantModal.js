@@ -97,7 +97,6 @@ export default function AddPlantModal() {
         <ModalContent
           as="form"
           onSubmit={(e) => {
-            console.log("here i am");
             handleSubmit(e);
           }}
         >
