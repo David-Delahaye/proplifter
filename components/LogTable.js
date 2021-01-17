@@ -1,26 +1,45 @@
 import fetcher from "@/utils/fetcher";
-import { Flex, Text } from "@chakra-ui/react";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+} from "@chakra-ui/react";
+import { compareDesc, format, parseISO } from "date-fns";
 import useSWR from "swr";
 
 export default function LogTable({ plant }) {
   const { data } = useSWR(`/api/logs/${plant.id}`, fetcher);
   const logs = data?.logs;
 
+  logs?.sort(function (a, b) {
+    return compareDesc(parseISO(a.createdAt), parseISO(b.createdAt));
+  });
+
   if (logs?.length) {
     return (
-      <>
-        <Flex flexDir="column">
+      <Table variant="simple">
+        <TableCaption>Load More</TableCaption>
+        <Thead>
+          <Tr>
+            <Th>Type</Th>
+            <Th>Description</Th>
+            <Th>Data</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
           {logs.map((log, i) => (
-            <Flex key={log.id} justifyContent="space-between">
-              <Text>{log.type}</Text>
-              <Text noOfLines={4} isTruncated width="300px">
-                {log.description}
-              </Text>
-              <Text>{log.createdAt}</Text>
-            </Flex>
+            <Tr key={log.id}>
+              <Td>{log.type}</Td>
+              <Td> {log.description}</Td>
+              <Td> {format(parseISO(log.createdAt), "P")}</Td>
+            </Tr>
           ))}
-        </Flex>
-      </>
+        </Tbody>
+      </Table>
     );
   }
   return "loading";

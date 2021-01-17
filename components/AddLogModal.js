@@ -23,6 +23,8 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  Text,
+  Center,
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { mutate } from "swr";
@@ -62,15 +64,20 @@ export default function AddLogModal({ plant }) {
 
   return (
     <>
-      <Button
+      <Center
         onClick={onOpen}
-        borderRadius="50%"
         backgroundColor="main.900"
         color="back.900"
         fontSize="26px"
+        maxWidth="32px"
+        w="32px"
+        maxHeight="32px"
+        borderRadius="50%"
+        fontWeight="bold"
+        p={0}
       >
         +
-      </Button>
+      </Center>
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
