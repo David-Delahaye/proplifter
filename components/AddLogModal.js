@@ -39,6 +39,7 @@ export default function AddLogModal({ plant }) {
     e.preventDefault();
 
     const newLog = {
+      height: e.target.height.value || plant.height,
       type: e.target.type.value,
       description: e.target.description.value,
       authorId: user?.uid,
@@ -75,7 +76,6 @@ export default function AddLogModal({ plant }) {
         <ModalContent
           as="form"
           onSubmit={(e) => {
-            console.log("here i am");
             handleSubmit(e);
           }}
         >
@@ -90,6 +90,16 @@ export default function AddLogModal({ plant }) {
                 <option value="medium">medium</option>
                 <option value="high">high</option>
               </Select>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Height</FormLabel>
+              <Input
+                ref={initialRef}
+                type="number"
+                placeholder={plant.height}
+                name="height"
+              />
             </FormControl>
 
             <FormControl>

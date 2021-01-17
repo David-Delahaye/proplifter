@@ -5,7 +5,6 @@ import useSWR from "swr";
 export default function LogTable({ plant }) {
   const { data } = useSWR(`/api/logs/${plant.id}`, fetcher);
   const logs = data?.logs;
-  console.log(logs);
 
   if (logs?.length) {
     return (

@@ -29,6 +29,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import useSWR from "swr";
+import Graph from "@/components/Graph";
 
 export async function getStaticPaths() {
   const { plants } = await getAllPlants();
@@ -120,31 +121,32 @@ export default function Profile({ plant }) {
         </Flex>
       </PageRow>
       <PageRow>
-        <AddLogModal plant={plant} />
         <Box
-          width="100%"
-          height="30vh"
+          m={2}
+          flex="1"
+          height="50vh"
           backgroundColor="main.900"
           borderRadius={40}
           p={5}
           color="back.900"
         >
+          <AddLogModal plant={plant} />
           <LogTable plant={plant} />
+        </Box>
+        <Box
+          m={2}
+          flex="1"
+          height="50vh"
+          backgroundColor="main.900"
+          borderRadius={40}
+          p={5}
+          color="back.900"
+        >
+          <Graph plant={plant} />
         </Box>
       </PageRow>
 
-      <PageRow>
-        <Box
-          width="100%"
-          height="30vh"
-          backgroundColor="main.900"
-          borderRadius={40}
-          p={5}
-          color="back.900"
-        >
-          Graph
-        </Box>
-      </PageRow>
+      <PageRow></PageRow>
     </DashboardShell>
   );
 }
