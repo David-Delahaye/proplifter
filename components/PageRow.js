@@ -1,6 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 
-export default function PageRow({ children }) {
+export default function PageRow(props) {
+  console.log(props);
   return (
     <Flex
       color="main.900"
@@ -9,8 +10,9 @@ export default function PageRow({ children }) {
       flexDir={["column", "column", "row"]}
       mb={48}
       minH="30vh"
+      {...props}
     >
-      {children}
+      {props.children}
     </Flex>
   );
 }

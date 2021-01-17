@@ -61,7 +61,7 @@ export default function Profile({ plant }) {
   return (
     <DashboardShell>
       <PlantsHeader plant={plant} />
-      <PageRow>
+      <PageRow mb={24}>
         <AspectRatio maxW="560px" ratio={1} flex="1">
           <Center>
             <PlantIcon icon={plant.icon} width="75%" height="75%" />
@@ -69,12 +69,15 @@ export default function Profile({ plant }) {
         </AspectRatio>
         <Flex flexDirection="column" width="100%" flex="1">
           <Flex direction={["row"]} w="100%">
-            <Text width="50%">
+            <Text mr={4}>
               <QuickWater plant={plant} /> <WaterReminder plant={plant} />
             </Text>
-            <Text>
+            <Text mr={4}>
               <QuickFeed plant={plant} /> <FeedReminder plant={plant} />
             </Text>
+            <Flex alignItems="center">
+              <AddLogModal plant={plant} /> <Text ml={1}>Log</Text>
+            </Flex>
           </Flex>
           <Divider borderColor="blackAlpha.500" my={4} />
           <Grid
@@ -120,21 +123,23 @@ export default function Profile({ plant }) {
           </Grid>
         </Flex>
       </PageRow>
-      <PageRow>
+      <PageRow mb={24}>
         <Box
-          m={2}
           flex="1"
           height="50vh"
           backgroundColor="main.900"
           borderRadius={40}
           p={5}
           color="back.900"
+          mb={4}
+          mr={4}
         >
-          <AddLogModal plant={plant} />
           <LogTable plant={plant} />
         </Box>
+      </PageRow>
+
+      <PageRow>
         <Box
-          m={2}
           flex="1"
           height="50vh"
           backgroundColor="main.900"
@@ -145,8 +150,6 @@ export default function Profile({ plant }) {
           <Graph plant={plant} />
         </Box>
       </PageRow>
-
-      <PageRow></PageRow>
     </DashboardShell>
   );
 }
