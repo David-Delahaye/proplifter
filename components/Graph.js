@@ -18,7 +18,8 @@ export default function Graph({ plant }) {
     dataWOO.push({
       x: logs[i].createdAt,
       y: logs[i].height,
-      another: logs[i].description,
+      description: logs[i].description,
+      type: logs[i].type,
     });
   }
 
