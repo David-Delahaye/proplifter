@@ -1,3 +1,4 @@
+import { Growth, Nutrition, Sunlight, Water } from "@/styles/icons";
 import fetcher from "@/utils/fetcher";
 import {
   Table,
@@ -33,7 +34,13 @@ export default function LogTable({ plant }) {
         <Tbody>
           {logs.map((log, i) => (
             <Tr key={log.id}>
-              <Td>{log.type}</Td>
+              <Td>
+                {" "}
+                {log.type === "sunlight" && <Sunlight boxSize={8} />}
+                {log.type === "growth" && <Growth boxSize={8} />}
+                {log.type === "water" && <Water boxSize={8} />}
+                {log.type === "nutrition" && <Nutrition boxSize={8} />}
+              </Td>
               <Td> {log.description}</Td>
               <Td> {format(parseISO(log.createdAt), "P")}</Td>
             </Tr>
