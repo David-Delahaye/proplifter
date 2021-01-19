@@ -7,10 +7,14 @@ const customTheme = extendTheme({
   },
   colors: {
     back: {
-      900: "#F2F2F2",
+      900: "hsl(0,0%,95%)",
+      800: "hsl(0,0%,90%)",
+      700: "hsl(0,0%,85%)",
     },
     main: {
-      900: "#333333",
+      900: "hsl(0,0%,20%)",
+      800: "hsl(0,0%,25%)",
+      700: "hsl(0,0%,30%)",
     },
   },
   fontWeights: {

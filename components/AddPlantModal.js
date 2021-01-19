@@ -24,6 +24,7 @@ import {
   MenuButton,
   MenuList,
 } from "@chakra-ui/react";
+import { addDays } from "date-fns";
 import { useRef } from "react";
 import { mutate } from "swr";
 import PlantIcon from "./PlantIcon";
@@ -67,6 +68,8 @@ export default function AddPlantModal() {
       createdAt: new Date().toISOString(),
       lastWatered: new Date().toISOString(),
       lastFed: new Date().toISOString(),
+      nextWater: addDays(new Date(), e.target.water.value).toISOString(),
+      nextFeed: addDays(new Date(), e.target.feed.value).toISOString(),
     };
     const { id } = createPlant(newPlant);
 

@@ -18,7 +18,8 @@ export default function Graph({ plant }) {
     dataWOO.push({
       x: logs[i].createdAt,
       y: logs[i].height,
-      another: logs[i].description,
+      description: logs[i].description,
+      type: logs[i].type,
     });
   }
 
@@ -36,7 +37,7 @@ export default function Graph({ plant }) {
 
   if (logs?.length) {
     return (
-      <Box width="100%" height="100%" bg="main.900" color="back.900">
+      <Box width="100%" height="100%">
         <MyResponsiveLine data={testData3} />
       </Box>
     );

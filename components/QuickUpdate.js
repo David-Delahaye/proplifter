@@ -36,6 +36,7 @@ export function QuickWater({ plant }) {
           onClick={() => {
             updatePlant(plant.id, {
               lastWatered: new Date().toISOString(),
+              nextWater: addDays(new Date(), plant.water).toISOString(),
             });
           }}
         >
@@ -75,6 +76,7 @@ export function QuickFeed({ plant }) {
           onClick={() => {
             updatePlant(plant.id, {
               lastFed: new Date().toISOString(),
+              nextFeed: addDays(new Date(), plant.feed).toISOString(),
             });
           }}
         >
@@ -86,15 +88,11 @@ export function QuickFeed({ plant }) {
 }
 
 export function WaterReminder({ plant }) {
-  const nextWater = addDays(parseISO(plant.lastWatered), plant.water);
-  const tillNextWater = formatDistanceToNow(nextWater);
-
+  const tillNextWater = formatDistanceToNow(parseISO(plant.nextWater));
   return tillNextWater;
 }
 
 export function FeedReminder({ plant }) {
-  const nextFeed = addDays(parseISO(plant.lastFed), plant.feed);
-  const tillNextFeed = formatDistanceToNow(nextFeed);
-
+  const tillNextFeed = formatDistanceToNow(parseISO(plant.nextFeed));
   return tillNextFeed;
 }
