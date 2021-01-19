@@ -23,14 +23,17 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  Stack,
+  MenuItem,
 } from "@chakra-ui/react";
 import { addDays } from "date-fns";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { mutate } from "swr";
 import PlantIcon from "./PlantIcon";
 
 export default function AddPlantModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedIcon, setSelectedIcon] = useState(0);
 
   const initialRef = useRef();
 
@@ -39,18 +42,37 @@ export default function AddPlantModal() {
   var indents = [];
   for (var i = 1; i < 50; i++) {
     indents.push(
-      <FormLabel width="64px" height="64px" borderRadius="50%" key={i}>
-        <Input
-          type="radio"
-          name="icon"
-          value={i}
+      <MenuItem
+        width="64px"
+        height="64px"
+        p={0}
+        m={1}
+        borderRadius="50%"
+        key={i}
+      >
+        <FormLabel
+          width="64px"
+          height="64px"
+          borderRadius="50%"
           id={i}
-          position="absolute"
-          w="64px"
-          h="64px"
-        />
-        <PlantIcon icon={i} width="64px" height="64px" p={1} />
-      </FormLabel>
+          onClick={(e) => {
+            console.log("You picked ", e.target.defaultValue);
+            setSelectedIcon(e.target.defaultValue);
+          }}
+        >
+          <Input
+            type="radio"
+            name="icon"
+            value={i}
+            id={i}
+            position="absolute"
+            w="64px"
+            h="64px"
+            border="none"
+          />
+          <PlantIcon icon={i} width="64px" height="64px" p={1} />
+        </FormLabel>
+      </MenuItem>
     );
   }
 
@@ -81,6 +103,8 @@ export default function AddPlantModal() {
       false
     );
 
+    setSelectedIcon(0);
+
     onClose();
   }
 
@@ -106,27 +130,45 @@ export default function AddPlantModal() {
           <ModalHeader>Add a plant</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>Plant name</FormLabel>
-              <Input ref={initialRef} placeholder="Jim" name="name" />
-            </FormControl>
+            <Stack direction="row" gap={4}>
+              <FormControl mt={4}>
+                {/* <FormLabel>Icon</FormLabel> */}
+                <Menu>
+                  <MenuButton
+                    as={Button}
+                    width="150px"
+                    height="150px"
+                    borderRadius="50%"
+                  >
+                    {selectedIcon !== 0 ? (
+                      <PlantIcon icon={selectedIcon} />
+                    ) : (
+                      "choose an icon"
+                    )}
+                  </MenuButton>
+                  <MenuList w="70vw" maxW="500px">
+                    <Flex
+                      wrap="wrap"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      {indents}
+                    </Flex>
+                  </MenuList>
+                </Menu>
+              </FormControl>
+              <Stack width="100%">
+                <FormControl>
+                  <FormLabel>Plant name</FormLabel>
+                  <Input ref={initialRef} placeholder="Jim" name="name" />
+                </FormControl>
 
-            <FormControl mt={4}>
-              <FormLabel>Icon</FormLabel>
-              <Menu>
-                <MenuButton as={Button}>Actions</MenuButton>
-                <MenuList>
-                  <Flex wrap="wrap" alignItems="center" justifyContent="center">
-                    {indents}
-                  </Flex>
-                </MenuList>
-              </Menu>
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>Height (cm)</FormLabel>
-              <Input type="number" placeholder="13cm" name="height" />
-            </FormControl>
+                <FormControl mt={4}>
+                  <FormLabel>Height (cm)</FormLabel>
+                  <Input type="number" placeholder="13cm" name="height" />
+                </FormControl>
+              </Stack>
+            </Stack>
 
             <FormControl mt={4}>
               <FormLabel>Sunlight Preference</FormLabel>

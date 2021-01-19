@@ -66,7 +66,11 @@ export default function Profile({ plant }) {
   return (
     <DashboardShell>
       <PlantsHeader plant={plant} />
-      <PageRow mb={24} p={8} backgroundColor="back.900" borderRadius="40px">
+      <Heading mb={4} fontSize="28px">
+        Status
+      </Heading>
+      <Text mb={8}>All the data that you have noted on this plant so far</Text>
+      <PageRow mb={24} p={8} backgroundColor="back.900" borderRadius="20px">
         <AspectRatio maxW="560px" ratio={1} flex="1">
           <Center>
             <PlantIcon icon={plant.icon} width="75%" height="75%" />
@@ -91,7 +95,7 @@ export default function Profile({ plant }) {
             templateColumns={["repeat(1, 100%)", "repeat(2, 50%)"]}
           >
             <Stat>
-              <StatLabel>
+              <StatLabel fontWeight="normal">
                 <Growth width="16px" height="16px" mr={1} />
                 Height
               </StatLabel>
@@ -100,7 +104,7 @@ export default function Profile({ plant }) {
             </Stat>
 
             <Stat>
-              <StatLabel>
+              <StatLabel fontWeight="normal">
                 <Sunlight width="16px" height="16px" mr={1} />
                 Sunlight preference
               </StatLabel>
@@ -109,7 +113,7 @@ export default function Profile({ plant }) {
             </Stat>
 
             <Stat>
-              <StatLabel>
+              <StatLabel fontWeight="normal">
                 <Nutrition width="16px" height="16px" mr={1} />
                 Feed Interval
               </StatLabel>
@@ -118,7 +122,7 @@ export default function Profile({ plant }) {
             </Stat>
 
             <Stat>
-              <StatLabel>
+              <StatLabel fontWeight="normal">
                 <Water width="16px" height="16px" mr={1} />
                 Water Interval
               </StatLabel>
@@ -128,12 +132,24 @@ export default function Profile({ plant }) {
           </Grid>
         </Flex>
       </PageRow>
-      <Heading mb={4}> History</Heading>
+      <Heading mb={4} fontSize="28px">
+        History
+      </Heading>
       <Text mb={8}>All the data that you have noted on this plant so far</Text>
-      <Tabs>
+      <Tabs variant="ghost">
         <TabList ml={10}>
-          <Tab>List</Tab>
-          <Tab>Graph</Tab>
+          <Tab
+            _selected={{ borderBottom: "2px solid", borderColor: "main.900" }}
+            _focus={{ shadow: "none" }}
+          >
+            List
+          </Tab>
+          <Tab
+            _selected={{ borderBottom: "2px solid", borderColor: "main.900" }}
+            _focus={{ shadow: "none" }}
+          >
+            Graph
+          </Tab>
         </TabList>
 
         <TabPanels>
@@ -142,7 +158,7 @@ export default function Profile({ plant }) {
               flex="1"
               minHeight="20vh"
               backgroundColor="back.900"
-              borderRadius={40}
+              borderRadius={20}
               mb={8}
               p={5}
               color="main.900"
@@ -155,7 +171,7 @@ export default function Profile({ plant }) {
               flex="1"
               height="50vh"
               backgroundColor="back.900"
-              borderRadius={40}
+              borderRadius={20}
               p={5}
               color="main.900"
             >

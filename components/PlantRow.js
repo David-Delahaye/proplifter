@@ -42,18 +42,18 @@ export default function PlantRow({ plant, i }) {
               </Heading>
             </Link>
           </NextLink>
-          <Text lineHeight="16px" mb={1}>
+          <Box lineHeight="16px" mb={1} display="inline">
             water in{" "}
             <Text fontWeight="bold" display="inline">
               <WaterReminder plant={plant} />
             </Text>
-          </Text>
-          <Text lineHeight="16px">
+          </Box>
+          <Box lineHeight="16px" display="inline">
             Feed in{" "}
             <Text fontWeight="bold" display="inline">
               <FeedReminder plant={plant} />
             </Text>
-          </Text>
+          </Box>
         </Flex>
       </Flex>
       <Stack direction="row" gap={4}>

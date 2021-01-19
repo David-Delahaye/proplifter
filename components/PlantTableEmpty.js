@@ -21,10 +21,11 @@ export default function PlantTableEmpty() {
   return (
     <>
       <Flex flexDirection="column">
+        <SkeletonRow backgroundColor="back.900" />
         <SkeletonRow />
-        <SkeletonRow backgroundColor="back.800" />
+        <SkeletonRow backgroundColor="back.900" />
         <SkeletonRow />
-        <SkeletonRow backgroundColor="back.800" />
+        <SkeletonRow backgroundColor="back.900" />
       </Flex>
     </>
   );
