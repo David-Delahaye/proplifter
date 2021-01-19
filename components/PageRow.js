@@ -1,7 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 
 export default function PageRow(props) {
-  console.log(props);
   return (
     <Flex
       color="main.900"

@@ -127,10 +127,10 @@ export default function Profile({ plant }) {
         <Box
           flex="1"
           height="50vh"
-          backgroundColor="main.900"
+          backgroundColor="back.800"
           borderRadius={40}
           p={5}
-          color="back.900"
+          color="main.900"
           mb={4}
           mr={4}
         >
@@ -142,10 +142,10 @@ export default function Profile({ plant }) {
         <Box
           flex="1"
           height="50vh"
-          backgroundColor="main.900"
+          backgroundColor="back.800"
           borderRadius={40}
           p={5}
-          color="back.900"
+          color="main.900"
         >
           <Graph plant={plant} />
         </Box>

@@ -2,26 +2,27 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import { ResponsiveLine } from "@nivo/line";
 
 const testTheme = {
-  background: "#333333",
-  textColor: "#f2f2f2",
+  background: "transparent",
+  textColor: "#333333",
   fontSize: 12,
+  fontFamily: "poppins",
   axis: {
     domain: {
       line: {
-        stroke: "#f2f2f2",
+        stroke: "#333333",
         strokeWidth: 1,
       },
     },
     ticks: {
       line: {
-        stroke: "#f2f2f2",
+        stroke: "#333333",
         strokeWidth: 1,
       },
     },
   },
   grid: {
     line: {
-      stroke: "#f2f2f2",
+      stroke: "#333333",
       strokeWidth: 1,
     },
   },
@@ -29,9 +30,8 @@ const testTheme = {
 
 const CustomPoint = (props) => {
   const { x, y, size, color, borderColor, borderWidth, datum } = props;
-  console.log(datum);
   return (
-    <g transform={`translate(${x}, ${y})`} style={{ pointerEvents: "none" }}>
+    <g style={{ pointerEvents: "none" }}>
       <circle
         x={size * -0.5}
         y={size * -0.5}
@@ -145,9 +145,9 @@ export default function MyResponsiveLine({ data }) {
       lineWidth={7}
       pointSymbol={CustomPoint}
       pointSize={26}
-      pointColor={"hsla(0, 0%, 80%,0.9)"}
-      pointBorderWidth={2}
-      pointBorderColor={"hsla(0, 0%, 20%, 1)"}
+      pointColor={"hsla(0, 0%, 25%, 1)"}
+      pointBorderWidth={0}
+      pointBorderColor={"hsl(0, 0%, 80%)"}
       enableGridX={false}
       enableGridY={false}
       enableArea={true}

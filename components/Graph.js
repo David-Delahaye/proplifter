@@ -37,7 +37,7 @@ export default function Graph({ plant }) {
 
   if (logs?.length) {
     return (
-      <Box width="100%" height="100%" bg="main.900" color="back.900">
+      <Box width="100%" height="100%">
         <MyResponsiveLine data={testData3} />
       </Box>
     );
