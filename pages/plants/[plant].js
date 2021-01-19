@@ -26,6 +26,11 @@ import {
   StatHelpText,
   StatLabel,
   StatNumber,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Text,
 } from "@chakra-ui/react";
 import useSWR from "swr";
@@ -61,7 +66,7 @@ export default function Profile({ plant }) {
   return (
     <DashboardShell>
       <PlantsHeader plant={plant} />
-      <PageRow mb={24}>
+      <PageRow mb={24} p={8} backgroundColor="back.900" borderRadius="40px">
         <AspectRatio maxW="560px" ratio={1} flex="1">
           <Center>
             <PlantIcon icon={plant.icon} width="75%" height="75%" />
@@ -123,33 +128,42 @@ export default function Profile({ plant }) {
           </Grid>
         </Flex>
       </PageRow>
-      <PageRow mb={24}>
-        <Box
-          flex="1"
-          minHeight="50vh"
-          backgroundColor="back.800"
-          borderRadius={40}
-          p={5}
-          color="main.900"
-          mb={4}
-          mr={4}
-        >
-          <LogTable plant={plant} />
-        </Box>
-      </PageRow>
+      <Heading mb={4}> History</Heading>
+      <Text mb={8}>All the data that you have noted on this plant so far</Text>
+      <Tabs>
+        <TabList ml={10}>
+          <Tab>List</Tab>
+          <Tab>Graph</Tab>
+        </TabList>
 
-      <PageRow>
-        <Center
-          flex="1"
-          height="50vh"
-          backgroundColor="back.800"
-          borderRadius={40}
-          p={5}
-          color="main.900"
-        >
-          <Graph plant={plant} />
-        </Center>
-      </PageRow>
+        <TabPanels>
+          <TabPanel p={0}>
+            <Box
+              flex="1"
+              minHeight="20vh"
+              backgroundColor="back.900"
+              borderRadius={40}
+              mb={8}
+              p={5}
+              color="main.900"
+            >
+              <LogTable plant={plant} />
+            </Box>
+          </TabPanel>
+          <TabPanel p={0}>
+            <Box
+              flex="1"
+              height="50vh"
+              backgroundColor="back.900"
+              borderRadius={40}
+              p={5}
+              color="main.900"
+            >
+              <Graph plant={plant} />
+            </Box>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </DashboardShell>
   );
 }

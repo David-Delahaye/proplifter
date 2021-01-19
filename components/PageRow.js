@@ -4,9 +4,9 @@ export default function PageRow(props) {
   return (
     <Flex
       color="main.900"
-      backgroundColor="back.900"
+      backgroundColor="back.800"
       position="relative"
-      flexDir={["column", "column", "row"]}
+      flexDir={["column", "column", "column", "row"]}
       mb={48}
       minH="30vh"
       {...props}

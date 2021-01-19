@@ -1,4 +1,5 @@
 import DashboardShell from "@/components/DashboardShell";
+import LogTable from "@/components/LogTable";
 import Nav from "@/components/Nav";
 import PageRow from "@/components/PageRow";
 import PlantIcon from "@/components/PlantIcon";
@@ -47,7 +48,7 @@ export default function Home() {
             Sign Up
           </Button>
         </Flex>
-        <Center flex="1" display={["none", "none", "flex"]}>
+        <Center flex="1" display={["none", "none", "none", "flex"]}>
           <PlantIcon icon={4} width={["50%", "50%", "100%"]} />
         </Center>
       </PageRow>
@@ -183,19 +184,12 @@ export default function Home() {
           <Box
             width="100%"
             height="30vh"
-            backgroundColor="main.900"
+            backgroundColor="back.800"
             borderRadius={40}
             p={5}
-            color="back.900"
+            color="main.900"
           >
-            Log notes here obviuosly salmonella
-            <br />
-            Log notes here obviuosly
-            <br />
-            Log notes here obviuosly beep
-            <br />
-            Log notes here obviuosly or not so obcioly
-            <br />
+            <LogTable plant={{ id: "GkpJqDJBIGocv4uZkX87" }} />
           </Box>
         </Center>
       </PageRow>
