@@ -8,6 +8,7 @@ import {
   Th,
   Td,
   TableCaption,
+  Skeleton,
 } from "@chakra-ui/react";
 import { compareDesc, format, parseISO } from "date-fns";
 import useSWR from "swr";
@@ -49,5 +50,51 @@ export default function LogTable({ plant }) {
       </Table>
     );
   }
-  return "loading";
+  return (
+    <Table variant="simple">
+      <TableCaption>Load More</TableCaption>
+      <Thead>
+        <Tr>
+          <Th>Type</Th>
+          <Th>Description</Th>
+          <Th>Data</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        <Tr>
+          <Td>
+            <Skeleton height="32px" width="32px" borderRadius="50%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="90%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="40px" />
+          </Td>
+        </Tr>
+        <Tr>
+          <Td>
+            <Skeleton height="32px" width="32px" borderRadius="50%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="90%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="40px" />
+          </Td>
+        </Tr>
+        <Tr>
+          <Td>
+            <Skeleton height="32px" width="32px" borderRadius="50%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="90%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="40px" />
+          </Td>
+        </Tr>
+      </Tbody>
+    </Table>
+  );
 }

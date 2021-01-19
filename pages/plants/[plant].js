@@ -126,7 +126,7 @@ export default function Profile({ plant }) {
       <PageRow mb={24}>
         <Box
           flex="1"
-          height="50vh"
+          minHeight="50vh"
           backgroundColor="back.800"
           borderRadius={40}
           p={5}
@@ -139,7 +139,7 @@ export default function Profile({ plant }) {
       </PageRow>
 
       <PageRow>
-        <Box
+        <Center
           flex="1"
           height="50vh"
           backgroundColor="back.800"
@@ -148,7 +148,7 @@ export default function Profile({ plant }) {
           color="main.900"
         >
           <Graph plant={plant} />
-        </Box>
+        </Center>
       </PageRow>
     </DashboardShell>
   );

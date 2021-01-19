@@ -93,9 +93,10 @@ export default function AddLogModal({ plant }) {
             <FormControl mt={4}>
               <FormLabel>Whats' changed</FormLabel>
               <Select placeholder="Select option" name="type">
-                <option value="dim">dim</option>
-                <option value="medium">medium</option>
-                <option value="high">high</option>
+                <option value="sunlight">sunlight</option>
+                <option value="nutrition">nutrition</option>
+                <option value="water">water</option>
+                <option value="growth">growth</option>
               </Select>
             </FormControl>
 

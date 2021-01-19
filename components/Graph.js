@@ -1,7 +1,7 @@
 import fetcher from "@/utils/fetcher";
 import { formatISO, parseISO } from "date-fns";
 import useSWR from "swr";
-import { Box } from "@chakra-ui/react";
+import { Box, Spinner } from "@chakra-ui/react";
 import { Sunlight } from "@/styles/icons";
 import MyResponsiveLine from "./GraphLine";
 
@@ -42,5 +42,5 @@ export default function Graph({ plant }) {
       </Box>
     );
   }
-  return "loading";
+  return <Spinner></Spinner>;
 }
