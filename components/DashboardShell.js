@@ -12,7 +12,7 @@ export default function DashboardShell({ children }) {
         p={8}
         px={[4, 8, 24, 40, 56]}
         m="auto"
-        backgroundColor="back.900"
+        backgroundColor="back.800"
         minH="95vh"
       >
         {children}

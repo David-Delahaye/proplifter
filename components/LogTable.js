@@ -8,6 +8,8 @@ import {
   Th,
   Td,
   TableCaption,
+  Skeleton,
+  Text,
 } from "@chakra-ui/react";
 import { compareDesc, format, parseISO } from "date-fns";
 import useSWR from "swr";
@@ -23,7 +25,6 @@ export default function LogTable({ plant }) {
   if (logs?.length) {
     return (
       <Table variant="simple">
-        <TableCaption>Load More</TableCaption>
         <Thead>
           <Tr>
             <Th>Type</Th>
@@ -41,7 +42,10 @@ export default function LogTable({ plant }) {
                 {log.type === "water" && <Water boxSize={8} />}
                 {log.type === "nutrition" && <Nutrition boxSize={8} />}
               </Td>
-              <Td> {log.description}</Td>
+              <Td>
+                {" "}
+                <Text noOfLines={[2, 2, 2, 5]}>{log.description}</Text>
+              </Td>
               <Td> {format(parseISO(log.createdAt), "P")}</Td>
             </Tr>
           ))}
@@ -49,5 +53,51 @@ export default function LogTable({ plant }) {
       </Table>
     );
   }
-  return "loading";
+  return (
+    <Table variant="simple">
+      <TableCaption>Load More</TableCaption>
+      <Thead>
+        <Tr>
+          <Th>Type</Th>
+          <Th>Description</Th>
+          <Th>Data</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        <Tr>
+          <Td>
+            <Skeleton height="32px" width="32px" borderRadius="50%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="90%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="40px" />
+          </Td>
+        </Tr>
+        <Tr>
+          <Td>
+            <Skeleton height="32px" width="32px" borderRadius="50%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="90%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="40px" />
+          </Td>
+        </Tr>
+        <Tr>
+          <Td>
+            <Skeleton height="32px" width="32px" borderRadius="50%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="90%" />
+          </Td>
+          <Td>
+            <Skeleton height="16px" width="40px" />
+          </Td>
+        </Tr>
+      </Tbody>
+    </Table>
+  );
 }

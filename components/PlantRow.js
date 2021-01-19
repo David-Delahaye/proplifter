@@ -15,7 +15,12 @@ import differenceInCalendarDays from "date-fns/differenceInCalendarDays";
 import addDays from "date-fns/addDays";
 import { format, parseISO } from "date-fns";
 import { updatePlant } from "@/lib/db";
-import { QuickFeed, QuickWater, WaterReminder } from "./QuickUpdate";
+import {
+  FeedReminder,
+  QuickFeed,
+  QuickWater,
+  WaterReminder,
+} from "./QuickUpdate";
 
 export default function PlantRow({ plant, i }) {
   return (
@@ -32,25 +37,23 @@ export default function PlantRow({ plant, i }) {
         <Flex flexDirection="column" ml={4}>
           <NextLink href={`/plants/${plant.id}`}>
             <Link>
-              <Heading fontSize="26px">{plant.name}</Heading>
+              <Heading fontSize="26px" lineHeight="26px" mb={2}>
+                {plant.name}
+              </Heading>
             </Link>
           </NextLink>
-          <Text>
+          <Box lineHeight="16px" mb={1} display="inline">
             water in{" "}
             <Text fontWeight="bold" display="inline">
               <WaterReminder plant={plant} />
             </Text>
-          </Text>
-          <Text noOfLines={1}>
+          </Box>
+          <Box lineHeight="16px" display="inline">
             Feed in{" "}
             <Text fontWeight="bold" display="inline">
-              {differenceInCalendarDays(
-                addDays(parseISO(plant.lastFed), plant.feed),
-                parseISO(plant.lastFed)
-              )}
-              {" days "}
+              <FeedReminder plant={plant} />
             </Text>
-          </Text>
+          </Box>
         </Flex>
       </Flex>
       <Stack direction="row" gap={4}>

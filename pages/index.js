@@ -1,4 +1,6 @@
 import DashboardShell from "@/components/DashboardShell";
+import Graph from "@/components/Graph";
+import LogTable from "@/components/LogTable";
 import Nav from "@/components/Nav";
 import PageRow from "@/components/PageRow";
 import PlantIcon from "@/components/PlantIcon";
@@ -15,6 +17,11 @@ import {
   Center,
   Button,
   Spacer,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel,
 } from "@chakra-ui/react";
 
 Flex;
@@ -47,7 +54,7 @@ export default function Home() {
             Sign Up
           </Button>
         </Flex>
-        <Center flex="1" display={["none", "none", "flex"]}>
+        <Center flex="1" display={["none", "none", "none", "flex"]}>
           <PlantIcon icon={4} width={["50%", "50%", "100%"]} />
         </Center>
       </PageRow>
@@ -179,25 +186,57 @@ export default function Home() {
             Start taking notes
           </Button>
         </Flex>
-        <Center flex="1">
-          <Box
-            width="100%"
-            height="30vh"
-            backgroundColor="main.900"
-            borderRadius={40}
-            p={5}
-            color="back.900"
-          >
-            Log notes here obviuosly salmonella
-            <br />
-            Log notes here obviuosly
-            <br />
-            Log notes here obviuosly beep
-            <br />
-            Log notes here obviuosly or not so obcioly
-            <br />
-          </Box>
-        </Center>
+
+        <Tabs variant="ghost" flex="1">
+          <TabList ml={10}>
+            <Tab
+              _selected={{
+                borderBottom: "2px solid",
+                borderColor: "main.900",
+              }}
+              _focus={{ shadow: "none" }}
+            >
+              List
+            </Tab>
+            <Tab
+              _selected={{
+                borderBottom: "2px solid",
+                borderColor: "main.900",
+              }}
+              _focus={{ shadow: "none" }}
+            >
+              Graph
+            </Tab>
+          </TabList>
+
+          <TabPanels>
+            <TabPanel p={0}>
+              <Box
+                flex="1"
+                minHeight="50vh"
+                backgroundColor="back.900"
+                borderRadius={20}
+                mb={8}
+                p={5}
+                color="main.900"
+              >
+                <LogTable plant={{ id: "GkpJqDJBIGocv4uZkX87" }} />
+              </Box>
+            </TabPanel>
+            <TabPanel p={0}>
+              <Box
+                flex="1"
+                height="50vh"
+                backgroundColor="back.900"
+                borderRadius={20}
+                p={5}
+                color="main.900"
+              >
+                <Graph plant={{ id: "GkpJqDJBIGocv4uZkX87" }} />
+              </Box>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </PageRow>
     </DashboardShell>
   );

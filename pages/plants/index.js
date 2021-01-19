@@ -10,6 +10,7 @@ import PlantIcon from "@/components/PlantIcon";
 import PlantsHeader from "@/components/PlantsHeader";
 import DashboardShell from "@/components/DashboardShell";
 import PlantTable from "@/components/PlantTable";
+import PlantTableEmpty from "@/components/PlantTableEmpty";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -33,5 +34,10 @@ export default function Dashboard() {
       </>
     );
 
-  return <h1>Loading State</h1>;
+  return (
+    <DashboardShell>
+      <PlantsHeader />
+      <PlantTableEmpty />
+    </DashboardShell>
+  );
 }
