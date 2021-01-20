@@ -10,9 +10,13 @@ import {
   TableCaption,
   Skeleton,
   Text,
+  Heading,
+  Flex,
+  Box,
 } from "@chakra-ui/react";
 import { compareDesc, format, parseISO } from "date-fns";
 import useSWR from "swr";
+import AddLogModal from "./AddLogModal";
 
 export default function LogTable({ plant }) {
   const { data } = useSWR(`/api/logs/${plant.id}`, fetcher);
@@ -51,6 +55,29 @@ export default function LogTable({ plant }) {
           ))}
         </Tbody>
       </Table>
+    );
+  }
+
+  if (logs) {
+    return (
+      <Box width="100%" height="100%">
+        <Flex
+          width="100%"
+          justify="center"
+          align="center"
+          direction="column"
+          p={16}
+        >
+          <Heading as="h2" size="md" mb="2">
+            You haven't added any logs.
+          </Heading>
+
+          <Flex alignItems="center">
+            <Text mr={4}>Start Tracking growth now</Text>
+            <AddLogModal plant={plant} />
+          </Flex>
+        </Flex>
+      </Box>
     );
   }
   return (
