@@ -156,7 +156,7 @@ export default function Profile({ plant }) {
           <TabPanel p={0}>
             <Box
               flex="1"
-              minHeight="20vh"
+              minHeight="50vh"
               backgroundColor="back.900"
               borderRadius={20}
               mb={8}

@@ -218,10 +218,4 @@ export default function AddPlantModal() {
       </Modal>
     </>
   );
-
-  return (
-    <form>
-      <button>Add a plant</button>
-    </form>
-  );
 }

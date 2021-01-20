@@ -10,6 +10,7 @@ import PlantIcon from "@/components/PlantIcon";
 import PlantsHeader from "@/components/PlantsHeader";
 import DashboardShell from "@/components/DashboardShell";
 import PlantTable from "@/components/PlantTable";
+import PlantTableLoad from "@/components/PlantTableLoad";
 import PlantTableEmpty from "@/components/PlantTableEmpty";
 
 export default function Dashboard() {
@@ -29,15 +30,17 @@ export default function Dashboard() {
   if (plants)
     return (
       <>
-        <AddPlantModal />
-        'EMPTY STATE'
+        <DashboardShell>
+          <PlantsHeader />
+          <PlantTableEmpty />
+        </DashboardShell>
       </>
     );
 
   return (
     <DashboardShell>
       <PlantsHeader />
-      <PlantTableEmpty />
+      <PlantTableLoad />
     </DashboardShell>
   );
 }
