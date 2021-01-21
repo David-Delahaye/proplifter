@@ -66,68 +66,80 @@ export default function Profile({ plant }) {
   return (
     <DashboardShell>
       <PlantsHeader plant={plant} />
-      <Heading mb={4} fontSize="28px">
-        Status
-      </Heading>
-      <Text mb={8}>All the data that you have noted on this plant so far</Text>
-      <PageRow mb={24} p={8} backgroundColor="back.900" borderRadius="20px">
-        <AspectRatio maxW="560px" ratio={1} flex="1">
-          <Center>
-            <PlantIcon icon={plant.icon} width="75%" height="75%" />
-          </Center>
-        </AspectRatio>
-        <Flex flexDirection="column" width="100%" flex="1">
-          <Flex direction={["row"]} w="100%">
-            <Text mr={4}>
-              <QuickWater plant={plant} /> <WaterReminder plant={plant} />
-            </Text>
-            <Text mr={4}>
-              <QuickFeed plant={plant} /> <FeedReminder plant={plant} />
-            </Text>
-            <Flex alignItems="center">
-              <AddLogModal plant={plant} /> <Text ml={1}>Log</Text>
-            </Flex>
+      <Flex justifyContent="space-between">
+        <Stack direction="column">
+          <Heading mb={4} fontSize="28px">
+            Status
+          </Heading>
+          <Text mb={8}>
+            All the data that you have noted on this plant so far
+          </Text>
+        </Stack>
+
+        <Flex direction={["row"]} alignItems="center">
+          <Text mr={4}>
+            <QuickWater plant={plant} /> <WaterReminder plant={plant} />
+          </Text>
+          <Text mr={4}>
+            <QuickFeed plant={plant} /> <FeedReminder plant={plant} />
+          </Text>
+          <Flex alignItems="center">
+            <AddLogModal plant={plant} /> <Text ml={1}>Log</Text>
           </Flex>
-          <Divider borderColor="blackAlpha.500" my={4} />
+        </Flex>
+      </Flex>
+
+      <PageRow mb={24} p={8} backgroundColor="back.900" borderRadius="20px">
+        <Center flex="1">
+          <PlantIcon icon={plant.icon} width="60%" height="60%" m={6} />
+        </Center>
+        <Flex
+          flexDirection="column"
+          width="100%"
+          flex="1"
+          justifyContent="flex-start"
+        >
+          <Stat flex="0" mb={2} size="sm">
+            <StatNumber> {plant.name}</StatNumber>
+            <StatHelpText>Golden Pothos</StatHelpText>
+          </Stat>
           <Grid
             rowGap={8}
             maxW="100%"
             templateColumns={["repeat(1, 100%)", "repeat(2, 50%)"]}
           >
-            <Stat>
-              <StatLabel fontWeight="normal">
-                <Growth width="16px" height="16px" mr={1} />
-                Height
-              </StatLabel>
-              <StatNumber> {plant.height || "N/A"}cm</StatNumber>
+            <Stat size="sm">
+              <StatLabel fontWeight="normal"></StatLabel>
+              <StatNumber>
+                <Growth width="16px" height="16px" mr={1} />{" "}
+                {plant.height || "N/A"}cm
+              </StatNumber>
               <StatHelpText>Feb 12 - Feb 28</StatHelpText>
             </Stat>
 
-            <Stat>
-              <StatLabel fontWeight="normal">
+            <Stat size="sm">
+              <StatLabel fontWeight="normal"></StatLabel>
+              <StatNumber>
+                {" "}
                 <Sunlight width="16px" height="16px" mr={1} />
-                Sunlight preference
-              </StatLabel>
-              <StatNumber> {plant.sunlight || "N/A"}</StatNumber>
-              <StatHelpText>Feb 12 - Feb 28</StatHelpText>
+                {plant.sunlight || "N/A"}
+              </StatNumber>
             </Stat>
 
-            <Stat>
-              <StatLabel fontWeight="normal">
-                <Nutrition width="16px" height="16px" mr={1} />
-                Feed Interval
-              </StatLabel>
-              <StatNumber> {plant.feed || "N/A"} days</StatNumber>
-              <StatHelpText>Feb 12 - Feb 28</StatHelpText>
+            <Stat size="sm">
+              <StatLabel fontWeight="normal"></StatLabel>
+              <StatNumber>
+                <Nutrition width="16px" height="16px" mr={1} />{" "}
+                {plant.feed || "N/A"} days
+              </StatNumber>
             </Stat>
 
-            <Stat>
-              <StatLabel fontWeight="normal">
-                <Water width="16px" height="16px" mr={1} />
-                Water Interval
-              </StatLabel>
-              <StatNumber> {plant.water || "N/A"} days</StatNumber>
-              <StatHelpText>Feb 12 - Feb 28</StatHelpText>
+            <Stat size="sm">
+              <StatLabel fontWeight="normal">WATER</StatLabel>
+              <StatNumber>
+                <Water width="16px" height="16px" mr={1} />{" "}
+                {plant.water || "N/A"} days
+              </StatNumber>
             </Stat>
           </Grid>
         </Flex>
