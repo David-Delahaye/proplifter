@@ -99,48 +99,66 @@ export default function Profile({ plant }) {
           flex="1"
           justifyContent="flex-start"
         >
-          <Stat flex="0" mb={2} size="sm">
-            <StatNumber> {plant.name}</StatNumber>
-            <StatHelpText>Golden Pothos</StatHelpText>
+          <Stat flex="0" mb={8} size="sm">
+            <StatNumber>
+              {" "}
+              {plant.name}
+              <span style={{ fontWeight: "lighter" }}> - 15 days old</span>
+            </StatNumber>
+            <StatHelpText mb={0}>Golden Pothos</StatHelpText>
           </Stat>
           <Grid
             rowGap={8}
             maxW="100%"
             templateColumns={["repeat(1, 100%)", "repeat(2, 50%)"]}
           >
-            <Stat size="sm">
-              <StatLabel fontWeight="normal"></StatLabel>
-              <StatNumber>
-                <Growth width="16px" height="16px" mr={1} />{" "}
-                {plant.height || "N/A"}cm
-              </StatNumber>
-              <StatHelpText>Feb 12 - Feb 28</StatHelpText>
-            </Stat>
+            <Flex flexDir="row" alignItems="center">
+              <Sunlight boxSize={9} mr={1} />
+              <Stat size="sm">
+                <StatNumber>
+                  <StatLabel fontWeight="normal" fontSize="14px">
+                    Sunlight
+                  </StatLabel>
+                  {plant.sunlight || "N/A"}
+                </StatNumber>
+              </Stat>
+            </Flex>
 
-            <Stat size="sm">
-              <StatLabel fontWeight="normal"></StatLabel>
-              <StatNumber>
-                {" "}
-                <Sunlight width="16px" height="16px" mr={1} />
-                {plant.sunlight || "N/A"}
-              </StatNumber>
-            </Stat>
+            <Flex flexDir="row" alignItems="center">
+              <Nutrition boxSize={9} mr={1} />
+              <Stat size="sm">
+                <StatNumber>
+                  <StatLabel fontWeight="normal" fontSize="14px">
+                    Nutrition
+                  </StatLabel>
+                  {plant.feed || "N/A"} days
+                </StatNumber>
+              </Stat>
+            </Flex>
 
-            <Stat size="sm">
-              <StatLabel fontWeight="normal"></StatLabel>
-              <StatNumber>
-                <Nutrition width="16px" height="16px" mr={1} />{" "}
-                {plant.feed || "N/A"} days
-              </StatNumber>
-            </Stat>
+            <Flex flexDir="row" alignItems="center">
+              <Growth boxSize={9} mr={1} />
+              <Stat size="sm">
+                <StatNumber>
+                  <StatLabel fontWeight="normal" fontSize="14px">
+                    Growth
+                  </StatLabel>
+                  {plant.height || "N/A"} cm
+                </StatNumber>
+              </Stat>
+            </Flex>
 
-            <Stat size="sm">
-              <StatLabel fontWeight="normal">WATER</StatLabel>
-              <StatNumber>
-                <Water width="16px" height="16px" mr={1} />{" "}
-                {plant.water || "N/A"} days
-              </StatNumber>
-            </Stat>
+            <Flex flexDir="row" alignItems="center">
+              <Water boxSize={9} mr={1} />
+              <Stat size="sm">
+                <StatNumber>
+                  <StatLabel fontWeight="normal" fontSize="14px">
+                    Water
+                  </StatLabel>
+                  {plant.water || "N/A"} days
+                </StatNumber>
+              </Stat>
+            </Flex>
           </Grid>
         </Flex>
       </PageRow>
