@@ -34,6 +34,8 @@ import PlantIcon from "./PlantIcon";
 export default function AddPlantModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedIcon, setSelectedIcon] = useState(0);
+  const [waterValue, setWaterValue] = useState(0);
+  const [feedValue, setFeedValue] = useState(0);
 
   const initialRef = useRef();
 
@@ -180,11 +182,15 @@ export default function AddPlantModal() {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Water Interval</FormLabel>
+              <FormLabel>Water Interval </FormLabel>
+              <FormLabel fontWeight="normal">{waterValue} days</FormLabel>
               <Slider
                 aria-label="watering frequency"
                 name="water"
-                onChangeEnd={(val) => console.log(val)}
+                value={waterValue}
+                onChange={(val) => {
+                  setWaterValue(val);
+                }}
               >
                 <SliderTrack>
                   <SliderFilledTrack />
@@ -195,10 +201,14 @@ export default function AddPlantModal() {
 
             <FormControl mt={4}>
               <FormLabel>Feed Interval</FormLabel>
+              <FormLabel fontWeight="normal">{feedValue} days</FormLabel>
               <Slider
                 aria-label="feeding frequency"
                 name="feed"
-                onChangeEnd={(val) => console.log(val)}
+                value={feedValue}
+                onChange={(val) => {
+                  setFeedValue(val);
+                }}
               >
                 <SliderTrack>
                   <SliderFilledTrack />
