@@ -43,22 +43,49 @@ export default function Login() {
   const auth = useAuth();
   const router = useRouter();
   if (auth.user) router.push("/account");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    console.log(e.target.email);
+
+    auth.signinWithPassword(e.target.email.value, e.target.password.value);
+  };
+
   return (
     <DashboardShell>
       <PageRow>
         <Flex flexDir="column" justifyContent="center" flex="1">
           <Heading mb={8}>Login</Heading>
-          <Input placeholder="Email" backgroundColor="back.900" mb={2} />
-          <PasswordInput mb={8} />
-          <Button
-            variant="solid"
-            size="md"
-            backgroundColor="main.900"
-            color="back.900"
-            mb={2}
+          <form
+            onSubmit={(e) => {
+              onSubmit(e);
+            }}
           >
-            Login
-          </Button>
+            <Input
+              placeholder="Email"
+              backgroundColor="back.900"
+              mb={2}
+              name="email"
+            />
+            <Input
+              mb={8}
+              name="password"
+              backgroundColor="back.900"
+              placeholder="password"
+              type="password"
+            />
+            <Button
+              variant="solid"
+              size="md"
+              backgroundColor="main.900"
+              color="back.900"
+              mb={2}
+              type="submit"
+            >
+              Login
+            </Button>
+          </form>
           <Text fontWeight="light">
             Dont have an Account?{" "}
             <NextLink href="/signup">

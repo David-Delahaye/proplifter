@@ -1,7 +1,6 @@
 import { Icon, createIcon } from "@chakra-ui/react";
 import customTheme from "./themes.js";
 const { main, back, yellow, blue, green, red } = customTheme.colors;
-console.log(customTheme.colors);
 
 export const Logo = createIcon({
   displayName: "Logo",
