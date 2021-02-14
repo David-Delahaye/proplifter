@@ -104,7 +104,7 @@ export default function MyResponsiveLine({ data }) {
     return prev.y < current.y ? prev : current;
   });
 
-  const month = getMonth(Date.now()) + 1;
+  let month = getMonth(Date.now()) + 1;
 
   return (
     <ResponsiveLine
@@ -115,8 +115,8 @@ export default function MyResponsiveLine({ data }) {
         type: "time",
         format: "%Y-%m-%d",
         precision: "day",
-        min: `2021-0${month}-01`,
-        max: `2021-0${month}-28`,
+        min: `2021-${month}-01`,
+        max: `2021-${month}-28`,
       }}
       xFormat="time:%Y-%m-%d"
       yScale={{

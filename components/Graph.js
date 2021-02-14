@@ -9,18 +9,21 @@ import AddLogModal from "./AddLogModal";
 export default function Graph({ plant }) {
   const { data } = useSWR(`/api/logs/${plant.id}`, fetcher);
   let logs = data?.logs;
+
+  logs = logs?.filter((log) => isThisMonth(parseISO(log.createdAt)));
+
   let dataWOO = [];
   for (let i = logs?.length - 1; i > -1; i--) {
     logs[i].createdAt = formatISO(parseISO(logs[i].createdAt), {
       representation: "date",
     });
     logs[i].height = parseInt(logs[i].height);
-      dataWOO.push({
-        x: logs[i].createdAt,
-        y: logs[i].height,
-        description: logs[i].description,
-        type: logs[i].type,
-      });
+    dataWOO.push({
+      x: logs[i].createdAt,
+      y: logs[i].height,
+      description: logs[i].description,
+      type: logs[i].type,
+    });
   }
 
   dataWOO.sort(function (a, b) {
