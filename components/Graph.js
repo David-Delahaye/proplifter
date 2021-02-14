@@ -1,5 +1,5 @@
 import fetcher from "@/utils/fetcher";
-import { formatISO, parseISO } from "date-fns";
+import { formatISO, isThisMonth, parseISO } from "date-fns";
 import useSWR from "swr";
 import { Box, Flex, Heading, Spinner, Text } from "@chakra-ui/react";
 import { Sunlight } from "@/styles/icons";
@@ -14,18 +14,17 @@ export default function Graph({ plant }) {
     logs[i].createdAt = formatISO(parseISO(logs[i].createdAt), {
       representation: "date",
     });
-    //= getHours(parseISO(logs[i].createdAt));
     logs[i].height = parseInt(logs[i].height);
-    dataWOO.push({
-      x: logs[i].createdAt,
-      y: logs[i].height,
-      description: logs[i].description,
-      type: logs[i].type,
-    });
+      dataWOO.push({
+        x: logs[i].createdAt,
+        y: logs[i].height,
+        description: logs[i].description,
+        type: logs[i].type,
+      });
   }
 
   dataWOO.sort(function (a, b) {
-    return a.y - b.y;
+    return a.x - b.x;
   });
 
   let testData2 = {
