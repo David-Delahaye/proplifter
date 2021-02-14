@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { ResponsiveLine } from "@nivo/line";
+import { getMonth } from "date-fns";
 
 const testTheme = {
   background: "transparent",
@@ -103,6 +104,8 @@ export default function MyResponsiveLine({ data }) {
     return prev.y < current.y ? prev : current;
   });
 
+  let month = getMonth(Date.now()) + 1;
+
   return (
     <ResponsiveLine
       data={data}
@@ -112,8 +115,8 @@ export default function MyResponsiveLine({ data }) {
         type: "time",
         format: "%Y-%m-%d",
         precision: "day",
-        min: "2021-01-01",
-        max: "2021-01-31",
+        min: `2021-${month}-01`,
+        max: `2021-${month}-28`,
       }}
       xFormat="time:%Y-%m-%d"
       yScale={{

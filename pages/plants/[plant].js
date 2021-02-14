@@ -35,6 +35,7 @@ import {
 } from "@chakra-ui/react";
 import useSWR from "swr";
 import Graph from "@/components/Graph";
+import { EditStat } from "@/components/EditPlantStat";
 
 export async function getStaticPaths() {
   const { plants } = await getAllPlants();
@@ -105,7 +106,9 @@ export default function Profile({ plant }) {
               {plant.name}
               <span style={{ fontWeight: "lighter" }}> - 15 days old</span>
             </StatNumber>
-            <StatHelpText mb={0}>Golden Pothos</StatHelpText>
+            <StatHelpText mb={0}>
+              {plant.species || <EditStat plant={plant} />}
+            </StatHelpText>
           </Stat>
           <Grid
             rowGap={8}

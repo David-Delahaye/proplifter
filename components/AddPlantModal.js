@@ -84,6 +84,7 @@ export default function AddPlantModal() {
     const newPlant = {
       icon: e.target.icon.value,
       name: e.target.name.value,
+      species: e.target.species.value,
       height: e.target.height.value,
       sunlight: e.target.sunlight.value,
       water: e.target.water.value,
@@ -165,12 +166,21 @@ export default function AddPlantModal() {
                   <Input ref={initialRef} placeholder="Jim" name="name" />
                 </FormControl>
 
-                <FormControl mt={4}>
-                  <FormLabel>Height (cm)</FormLabel>
-                  <Input type="number" placeholder="13cm" name="height" />
+                <FormControl>
+                  <FormLabel>Plant Species</FormLabel>
+                  <Input
+                    ref={initialRef}
+                    placeholder="Golden Pothis"
+                    name="species"
+                  />
                 </FormControl>
               </Stack>
             </Stack>
+
+            <FormControl mt={4}>
+              <FormLabel>Height (cm)</FormLabel>
+              <Input type="number" placeholder="13cm" name="height" />
+            </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Sunlight Preference</FormLabel>
