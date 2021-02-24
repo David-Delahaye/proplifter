@@ -20,7 +20,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="public\svg\007-botanic.svg" alt="Logo" width="80" height="80">
+    <img src="public/svg/007-botanic.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Proplifter</h3>
@@ -96,7 +96,7 @@ To get a local copy up and running follow these simple example steps.
 First, run the development server:
 
 ```bash
-git clone https://github.com/libgit2/libgit2
+git clone https://github.com/David-Delahaye/proplifter
 npm i
 
 npm run dev
@@ -175,4 +175,4 @@ Project Link: [https://github.com/David-Delahaye/proplifter](https://github.com/
 [license-url]: https://github.com/David-Delahaye/proplifter/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/david-delahaye-5643381b8/
-[product-screenshot]: public\ProplifterResponsive.png
+[product-screenshot]: public/ProplifterResponsive.png
