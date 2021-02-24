@@ -176,4 +176,3 @@ Project Link: [https://github.com/David-Delahaye/proplifter](https://github.com/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/david-delahaye-5643381b8/
 [product-screenshot]: public\ProplifterResponsive.png
-
