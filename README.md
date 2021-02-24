@@ -137,7 +137,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-David Delahaye - [@DavDelahaye](https://twitter.com/DavDelahaye) - delahaye3@hotmail.com
+[David Delahaye](https://david-delahaye.co.uk/) - [@DavDelahaye](https://twitter.com/DavDelahaye) - 
 
 Project Link: [https://github.com/David-Delahaye/proplifter](https://github.com/David-Delahaye/proplifter)
 
