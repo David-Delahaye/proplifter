@@ -20,7 +20,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="public/vercel.svg" alt="Logo" width="80" height="80">
+    <img src="public\svg\007-botanic.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Proplifter</h3>
@@ -175,5 +175,5 @@ Project Link: [https://github.com/David-Delahaye/proplifter](https://github.com/
 [license-url]: https://github.com/David-Delahaye/proplifter/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/david-delahaye-5643381b8/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: public\ProplifterResponsive.png
 
